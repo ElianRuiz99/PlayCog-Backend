@@ -2,6 +2,7 @@ package com.playCog.playcog.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -37,6 +38,9 @@ public class User {
 
     @Column(name = "direccion_residencia")
     private String direccion_residencia;
+
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Progress> progressesUser;
 
     public Integer getId() {
         return id;
@@ -92,5 +96,12 @@ public class User {
     }
     public void setDireccion_residencia(String direccion_residencia) {
         this.direccion_residencia = direccion_residencia;
+    }
+
+    public List<Progress> getProgressesUser() {
+        return progressesUser;
+    }
+    public void setProgressesUser(List<Progress> progressesUser) {
+        this.progressesUser = progressesUser;
     }
 }
