@@ -1,5 +1,7 @@
 package com.playCog.playcog.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Videogame {
             sequenceName = "videojuego_id_seq",
             allocationSize = 1)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -23,6 +25,7 @@ public class Videogame {
     @Column(name = "descripcion")
     private String descripcion;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_categoria",
                 referencedColumnName = "id",
@@ -36,9 +39,6 @@ public class Videogame {
                 )
     )
     private Category idCategory;
-
-    @OneToMany(mappedBy = "idVideogame", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Progress> progressesVideogame;
 
     public int getId() {
         return id;
@@ -68,10 +68,4 @@ public class Videogame {
         this.idCategory = idCategory;
     }
 
-    public List<Progress> getProgressesVideogame() {
-        return progressesVideogame;
-    }
-    public void setProgressesVideogame(List<Progress> progressesVideogame) {
-        this.progressesVideogame = progressesVideogame;
-    }
 }

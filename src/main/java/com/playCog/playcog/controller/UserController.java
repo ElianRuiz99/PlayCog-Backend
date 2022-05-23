@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     //eliminar
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public void deleteUser(@PathVariable int id){
         userService.daleteUser(id);
     }
@@ -42,7 +43,6 @@ public class UserController {
         User findUser = userService.getUserById(id);
         findUser.setNombre(user.getNombre());
         findUser.setApellido(user.getApellido());
-        findUser.setCorreo(user.getCorreo());
         findUser.setContrasena(user.getContrasena());
         findUser.setFecha_nacimiento(user.getFecha_nacimiento());
         findUser.setCelular(user.getCelular());
