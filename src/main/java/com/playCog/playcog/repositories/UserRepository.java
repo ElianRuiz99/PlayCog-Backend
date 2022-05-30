@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    public User findUserById(int id);
+    //public User findUserById(int id);
+
+    public User findUserByCorreo(String email);
 
 }

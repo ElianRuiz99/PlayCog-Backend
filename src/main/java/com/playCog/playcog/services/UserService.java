@@ -25,8 +25,13 @@ public class UserService {
     }
 
     //Listar por id
-    public User getUserById(int id){
-        return userRepository.findUserById(id);
+    //public User getUserById(int id){
+    //    return userRepository.findUserById(id);
+    //}
+
+    //Listar por correo
+    public User getUserByEmail(String email){
+        return  userRepository.findUserByCorreo(email);
     }
 
 }

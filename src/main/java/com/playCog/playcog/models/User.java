@@ -1,5 +1,7 @@
 package com.playCog.playcog.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,7 +33,7 @@ public class User {
     private String contrasena;
 
     @Column(name = "fecha_nacimiento")
-    private LocalDate fecha_nacimiento;
+    private String fecha_nacimiento;
 
     @Column(name = "celular")
     private String celular;
@@ -39,6 +41,7 @@ public class User {
     @Column(name = "direccion_residencia")
     private String direccion_residencia;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Progress> progressesUser;
 
@@ -77,10 +80,10 @@ public class User {
         this.contrasena = contrasena;
     }
 
-    public LocalDate getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
-    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

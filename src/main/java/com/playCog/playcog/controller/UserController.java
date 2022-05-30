@@ -31,16 +31,22 @@ public class UserController {
         userService.daleteUser(id);
     }
 
-    //listar
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id){
-        return userService.getUserById(id);
+    //listar por id
+    //@GetMapping("/{id}")
+    //public User getUserById(@PathVariable int id){
+    //    return userService.getUserById(id);
+    //}
+
+    //listar por correo
+    @GetMapping("/{correo}")
+    public User getUserCorreo(@PathVariable String correo){
+        return  userService.getUserByEmail(correo);
     }
 
     //actualizar
-    @PutMapping("/update/{id}")
-    public User updateUser (@PathVariable int id, @Validated @RequestBody User user){
-        User findUser = userService.getUserById(id);
+    @PostMapping("/update/{correo}")
+    public User updateUser (@PathVariable String correo, @Validated @RequestBody User user){
+        User findUser = userService.getUserByEmail(correo);
         findUser.setNombre(user.getNombre());
         findUser.setApellido(user.getApellido());
         findUser.setContrasena(user.getContrasena());
