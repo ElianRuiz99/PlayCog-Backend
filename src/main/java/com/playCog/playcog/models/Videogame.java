@@ -25,6 +25,9 @@ public class Videogame {
     @Column(name = "descripcion")
     private String descripcion;
 
+    @Column(name = "link")
+    private String link;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_categoria",
@@ -68,4 +71,10 @@ public class Videogame {
         this.idCategory = idCategory;
     }
 
+    public String getLink() {
+        return link;
+    }
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

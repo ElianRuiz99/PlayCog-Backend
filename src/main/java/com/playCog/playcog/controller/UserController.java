@@ -53,6 +53,7 @@ public class UserController {
         findUser.setFecha_nacimiento(user.getFecha_nacimiento());
         findUser.setCelular(user.getCelular());
         findUser.setDireccion_residencia(user.getDireccion_residencia());
+
         return userService.saveUser(findUser);
     }
 }
